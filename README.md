@@ -1,19 +1,26 @@
 # periscope-archetype
 
-periscope-components
+Data visualization to extend [Dash][] components by using [Victory][] which is a react d3 library
 
-## Dash
-
-Go to this link to learn about [Dash][].
-
-## Getting started
+## Install dependencies
 
 ```sh
-# Install dependencies
-$ npm install
+brew install python
+easy_install pip
+pip install dash==0.18.3
+pip install dash-renderer==0.9.0  # The dash front-end
+pip install dash-html-components==0.7.0  # HTML components
+pip install dash-core-components==0.12.5  # Supercharged components
+npm install -g builder-init
+```
 
-# Watch source for changes and build to `lib/`
-$ npm start
+## Create example plugin
+```sh
+builder-init dash-components-archetype
+cd my-component-library
+npm install
+python usage.py
+open http://localhost:8050
 ```
 
 ## Development
@@ -60,45 +67,14 @@ $ npm run test-debug
 6. Now you can set breakpoints and reload the page to hit them.
 7. The test output is available in the "Console" tab, or in any tab by pressing "Esc".
 
-#### To run a specific test
-
-In your test, append `.only` to a `describe` or `it` statement:
-
-```javascript
-describe.only('Foo component', () => {
-    // ...
-})l
-```
-
 ### Testing your components in Dash
 
-1. Build development bundle to `lib/` and watch for changes
-
-        # Once this is started, you can just leave it running.
-        $ npm start
-
-2. Install module locally (after every change)
-
-        # Generate metadata, and build the JavaScript bundle
-        $ npm run install-local
-
-        # Now you're done. For subsequent changes, if you've got `npm start`
-        # running in a separate process, it's enough to just do:
-        $ python setup.py install
-
-3. Run the dash layout you want to test
-
-        # Import periscope-archetype to your layout, then run it:
-        $ python my_dash_layout.py
-
-
-**TODO:** There is a workflow that links your module into `site-packages` which would
-make it unnecessary to re-run `2.` on every change: `python setup.py develop`.
-Unfortunately, this doesn't seem to work with resources defined in
-`package_data`.
-
-See https://github.com/plotly/dash-components-archetype/issues/20
-
+```sh
+npm run prepublish
+python setup.py install
+python usage.py
+open http://localhost:8050
+```
 
 ## Installing python package locally
 
@@ -160,5 +136,6 @@ See the [dash-components-archetype][] repo for more information.
 
 
 [Builder]: https://github.com/FormidableLabs/builder
-[Dash]: https://github.com/plotly/dash2
+[Dash]: https://plot.ly/products/dash
 [dash-components-archetype]: https://github.com/plotly/dash-components-archetype
+[Victory]: http://formidable.com/open-source/victory
