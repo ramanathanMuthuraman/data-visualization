@@ -1,0 +1,5 @@
+include periscope_archetype/bundle.js
+include periscope_archetype/bundle.js.map
+include periscope_archetype/metadata.json
+include README.md
+include LICENSE.md
